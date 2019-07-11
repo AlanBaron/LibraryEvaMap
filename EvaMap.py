@@ -19,6 +19,7 @@ class EvaMap :
     g_link = Graph()
     g_map = Graph()
     g_onto = Graph()
+    liste_map = list()
 
     def __init__(self, onto, map, data):
         self.read_json(data) #From json
