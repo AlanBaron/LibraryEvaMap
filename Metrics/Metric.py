@@ -9,7 +9,7 @@ class Metric(Dimension) :
     def __init__(self, nom, desc) :
         self.name = nom
         self.score = 0
-        self.feedback = {}
+        self.feedback = list()
         self.description = desc
 
     def metric_to_string(self):

@@ -10,7 +10,7 @@ class A_Error(Metric) :
     def __init__(self, nom = "Error", desc = " "):
         self.name = nom
         self.score = 0
-        self.feedback = []
+        self.feedback = list()
         self.description = desc
 
     def Error(self) : #Corrigé, opérationelle, et optimisé au mieux. Ne pas prendre en compte les URIs avec des $ ? (Copier coller le code plus bas, modifier conditionelle, et c'est bon)
