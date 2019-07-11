@@ -44,7 +44,7 @@ class A_Error(Metric) :
             try :
                 a.raise_for_status()
             except:
-                self.feedback[points] = elt + "gives an Error"
+                self.feedback.append(elt + "gives an Error")
                 points = points + 1
 
         if nbPossible == 0 :
