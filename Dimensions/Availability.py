@@ -1,10 +1,8 @@
 from Dimensions import Dimension
-from Metrics import A_Error
+from Metrics.A_Error import Error
 
-class Availability(Dimension) :
 
-    def __init__(self, nom = 'Availability', name_metrics_list = {"A_Error.Error", "localLink.localLink", "externalLink.externalLink"}) :
-        self.name = nom
-        self.score = 0
-        for names in name_metrics_list :
-            self.list_metrics.add(names)
+class Availability(Dimension):
+
+    def __init__(self, nom='Availability', list_metrics=[Error]):
+        super().__init__(nom, list_metrics)
