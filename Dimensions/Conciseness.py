@@ -3,7 +3,7 @@ from Metrics import A_Error
 
 class Conciseness(Dimension) :
 
-    def __init__(self, nom = 'Conciseness', name_metrics_list = {}) :
+    def __init__(self, nom = 'Conciseness', name_metrics_list = {"longURI.longURI", "duplicatedRules.duplicatedRules"}) :
         self.name = nom
         self.score = 0
         for names in name_metrics_list :

@@ -5,7 +5,7 @@ import re
 
 import rdflib
 
-class subClassesProperties(Metric) :
+class humanReadable(Metric) :
 
     def __init__(self, nom = "Human Readable", desc = " "):
         self.name = nom
@@ -14,7 +14,7 @@ class subClassesProperties(Metric) :
         self.description = desc
 
 
-    def HumanReadableURIs(self) : #Complet --------------------------------------------------------------------------------
+    def humanReadableURIs(self) : #Complet --------------------------------------------------------------------------------
         nbPossible = 0
         points = 0
         for s, p, o in EvaMap.g_map.triples((None, None, None)) :

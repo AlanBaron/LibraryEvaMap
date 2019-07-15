@@ -3,7 +3,7 @@ from EvaMap import EvaMap
 
 import rdflib
 
-class subClassesProperties(Metric) :
+class disjointWith(Metric) :
 
     def __init__(self, nom = "Disjoint Classes", desc = " "):
         self.name = nom
