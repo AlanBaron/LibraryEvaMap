@@ -1,25 +1,19 @@
-from Metrics import Metric
-from EvaMap import EvaMap
-
 import rdflib
 
-class externalURIs(Metric) :
+from Metrics.metric import metric
 
-    def __init__(self, nom = "Use of external URIs", desc = " "):
-        self.name = nom
-        self.score = 0
-        self.feedback = list()
-        self.description = desc
-
-    def Interlinking_externalURIs(self) : #Revoir le return, sinon complet
-        points = 0
-        nbPossible = 0
-        for s, _, o in EvaMap.g_map.triples((None, None, None)) :
-            if isinstance(s, rdflib.term.URIRef) and isinstance(o, rdflib.term.URIRef) : #Donc on a un lien entre deux URIs
-                nbPossible = nbPossible + 1
-                if not (s, None, o) in EvaMap.g_onto : #Et si ça n'existe pas dans notre ontologie, alors on a créé un nouveau lien
-                    points = points + 1
-        if nbPossible == 0 :
-            return 1
-        else :
-            return points/nbPossible
+def externalURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Revoir le return, sinon complet
+    points = 0
+    nbPossible = 0
+    result = metric()
+    result.name = "Use of external URIs"
+    for s, _, o in g_map.triples((None, None, None)) :
+        if isinstance(s, rdflib.term.URIRef) and isinstance(o, rdflib.term.URIRef) : #Donc on a un lien entre deux URIs
+            nbPossible = nbPossible + 1
+            if not (s, None, o) in g_onto : #Et si ça n'existe pas dans notre ontologie, alors on a créé un nouveau lien
+                points = points + 1
+    if nbPossible == 0 :
+        result.score = 1
+    else :
+        result.score = points/nbPossible
+    return result

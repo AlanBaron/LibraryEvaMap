@@ -1,10 +1,8 @@
 from Dimensions import Dimension
-from Metrics import A_Error
+from Metrics.longURI import longURI
+from Metrics.duplicatedRules import duplicatedRules
 
 class Conciseness(Dimension) :
 
-    def __init__(self, nom = 'Conciseness', name_metrics_list = {"longURI.longURI", "duplicatedRules.duplicatedRules"}) :
-        self.name = nom
-        self.score = 0
-        for names in name_metrics_list :
-            self.list_metrics.add(names)
+    def __init__(self, nom='Conciseness', list_metrics=[longURI, duplicatedRules]):
+        super().__init__(nom, list_metrics)

@@ -3,9 +3,9 @@ import requests
 
 from Metrics.metric import metric
 
-
-def Error(onto, map, g_map, data) : #Corrigé, opérationelle, et optimisé au mieux. Ne pas prendre en compte les URIs avec des $ ? (Copier coller le code plus bas, modifier conditionelle, et c'est bon)
+def Error(g_onto, liste_map, g_map, raw_data, g_link) :
     result = metric()
+    result.name = "Availability error"
     points = 0
     set_URIs = set()
     for s, p, o in g_map.triples((None, None, None)) :

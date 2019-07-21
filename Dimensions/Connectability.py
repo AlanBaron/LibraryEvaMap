@@ -1,10 +1,10 @@
 from Dimensions import Dimension
-from Metrics import A_Error
+from Metrics.sameAs import sameAs
+from Metrics.externalURIs import externalURIs
+from Metrics.localLinks import localLinks
+from Metrics.existingVocab import existingVocab
 
 class Connectability(Dimension) :
 
-    def __init__(self, nom = 'Connectability', name_metrics_list = {"sameAs.sameAs", "externalURIs.externalURIs", "localLinks.localLinks", "existingVocab.existingVocab"}) :
-        self.name = nom
-        self.score = 0
-        for names in name_metrics_list :
-            self.list_metrics.add(names)
+    def __init__(self, nom='Connectability', list_metrics=[existingVocab, sameAs, externalURIs, localLinks]):
+        super().__init__(nom, list_metrics)

@@ -1,10 +1,10 @@
 from Dimensions import Dimension
-from Metrics import A_Error
+from Metrics.subClassesProperties import subClassesProperties
+from Metrics.equivalentClassesProperties import equivalentClassesProperties
+from Metrics.disjointWith import disjointWith
+from Metrics.domainRange import domainRange
 
 class Consistency(Dimension) :
 
-    def __init__(self, nom = 'Consistency', name_metrics_list = {"subClassesProperties.subClassesProperties", "equivalentClassesProperties.equivalentClassesProperties", "disjointWith.disjointWith", "domainRange.domainRange"}) :
-        self.name = nom
-        self.score = 0
-        for names in name_metrics_list :
-            self.list_metrics.add(names)
+    def __init__(self, nom='Consistency', list_metrics=[domainRange, subClassesProperties, equivalentClassesProperties, disjointWith]):
+        super().__init__(nom, list_metrics)
