@@ -6,7 +6,6 @@ import rdflib
 import yaml
 import re
 from rdflib.graph import Graph
-import pprint
 from pathlib import Path
 #import urllib
 from urllib.parse import urlparse
@@ -19,7 +18,8 @@ class EvaMap :
     g_link = Graph()
     g_map = Graph()
     g_onto = Graph()
-    liste_map = list()
+    liste_map = []
+    final_list = []
 
     def __init__(self, onto, map, data):
         self.read_json(data) #From json

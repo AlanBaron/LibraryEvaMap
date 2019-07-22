@@ -19,8 +19,8 @@ class Dimension(EvaMap) :
         dico["score"] =  self.score
         dico["metrics"] = self.list_results
 
-    def calc_score(self, onto, map, g_map, data) :
+    def calc_score(self, g_onto, liste_map, g_map, raw_data, g_link) :
         for metric in self.list_metrics :
-            result_metric = metric(onto, map, g_map, data)
+            result_metric = metric(g_onto, liste_map, g_map, raw_data, g_link)
             self.score = self.score * result_metric.score
             self.list_results.append(result_metric)
