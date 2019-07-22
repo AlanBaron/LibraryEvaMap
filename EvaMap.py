@@ -12,6 +12,13 @@ from urllib.parse import urlparse
 import requests
 import json
 
+import Dimensions.Availability
+import Dimensions.Clarity
+import Dimensions.Conciseness
+import Dimensions.Connectability
+import Dimensions.Consistency
+import Dimensions.Coverability
+
 
 class EvaMap :
 
@@ -19,6 +26,8 @@ class EvaMap :
     g_map = Graph()
     g_onto = Graph()
     liste_map = []
+    dimensions_list = [(Dimensions.Availability, 0), (Dimensions.Clarity, 0), (Dimensions.Conciseness, 0), (Dimensions.Connectability, 0), (Dimensions.Consistency, 0), (Dimensions.Coverability, 0)]
+    score_tot = []
     final_list = []
 
     def __init__(self, onto, map, data):
@@ -106,3 +115,9 @@ class EvaMap :
         i = 0
         for poids in self.liste :
             self.weight[i] = poids
+
+    def calc_tot(self):
+        for dimension in self.dimensions_list :
+            self.score_tot.append(dimension[0].calc_score(self.g_onto, self.liste_map, self.g_map, self.raw_data, self.g_link))
+            self.final_list["tot_score"] = self.final_list["tot_score"] + 0 #voir les poids
+        
