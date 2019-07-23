@@ -7,7 +7,7 @@ from Metrics.metric import metric
 def existingVocab(g_onto, liste_map, g_map, raw_data, g_link) :
     set_URIs = set()
     result = metric()
-    result.name = "Use of existing vocabulary"
+    result['name'] = "Use of existing vocabulary"
     nbPossible = 0
     points = 0
     for s, p, o in g_map.triples((None, None, None)) :
@@ -33,9 +33,9 @@ def existingVocab(g_onto, liste_map, g_map, raw_data, g_link) :
         if json_data["total_results"] != 0 :
             points = points + 1
         else :
-            result.feedback.append(elt + " is not referenced in LOV.")
+            result['feedback'].append(elt + " is not referenced in LOV.")
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score =  points/nbPossible
+        result['score'] =  points/nbPossible
     return result

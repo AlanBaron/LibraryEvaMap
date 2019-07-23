@@ -8,7 +8,7 @@ def domainRange(g_onto, liste_map, g_map, raw_data, g_link) : #Il est bon de not
     points = 0
     liste_O = []
     result = metric()
-    result.name = "Domain and range of properties"
+    result['name'] = "Domain and range of properties"
     for s, p, o in g_map.triples((None, None,None)) :
         nbPossible = nbPossible + 2
         boolean = False
@@ -30,7 +30,7 @@ def domainRange(g_onto, liste_map, g_map, raw_data, g_link) : #Il est bon de not
         if boolean :
             points = points + 1
         else :
-            result.feedback.append(p + " has the wrong domain.")
+            result['feedback'].append(p + " has the wrong domain.")
         liste_O = []
         boolean = False
         for _, _, o2 in g_link.triples((p, rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#range'), None))	:
@@ -60,10 +60,10 @@ def domainRange(g_onto, liste_map, g_map, raw_data, g_link) : #Il est bon de not
         if boolean :
             points = points + 1
         else :
-            result.feedback.append(p + " has the wrong range.")
+            result['feedback'].append(p + " has the wrong range.")
 
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score =  1-((nbPossible) - points)/(nbPossible)
+        result['score'] = 1-((nbPossible) - points)/(nbPossible)
     return result

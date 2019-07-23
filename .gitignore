@@ -125,3 +125,7 @@ dmypy.json
 
 #intellij
 .idea/
+
+.DS_Store
+
+test.py

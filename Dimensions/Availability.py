@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.A_Error import Error
 from Metrics.localLink import localLink
 from Metrics.externalLink import externalLink

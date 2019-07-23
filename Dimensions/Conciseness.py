@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.longURI import longURI
 from Metrics.duplicatedRules import duplicatedRules
 

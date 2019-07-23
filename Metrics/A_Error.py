@@ -5,7 +5,7 @@ from Metrics.metric import metric
 
 def Error(g_onto, liste_map, g_map, raw_data, g_link) :
     result = metric()
-    result.name = "Availability error"
+    result['name'] = "Availability error"
     points = 0
     set_URIs = set()
     for s, p, o in g_map.triples((None, None, None)) :
@@ -36,11 +36,11 @@ def Error(g_onto, liste_map, g_map, raw_data, g_link) :
         try :
             a.raise_for_status()
         except:
-            result.feedbacks.append(elt + "gives an Error")
+            result['feedbacks'].append(elt + "gives an Error")
             points = points + 1
 
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score = 1-points/nbPossible
+        result['score'] = 1-points/nbPossible
     return result

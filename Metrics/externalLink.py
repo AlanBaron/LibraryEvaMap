@@ -7,7 +7,7 @@ def externalLink(g_onto, liste_map, g_map, raw_data, g_link) : #Fonctionnel
     points = 0
     nbPossible = 0
     result = metric()
-    result.name = "Use of external link"
+    result['name'] = "Use of external link"
     set_URIs = set()
     for _, p, o in g_map.triples((None, None, None)) :
         if isinstance(p, rdflib.term.URIRef) :
@@ -31,7 +31,7 @@ def externalLink(g_onto, liste_map, g_map, raw_data, g_link) : #Fonctionnel
                 except:
                     points = points + 1
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score = 1-points/nbPossible
+        result['score'] = 1-points/nbPossible
     return result

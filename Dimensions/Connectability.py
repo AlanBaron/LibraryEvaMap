@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.sameAs import sameAs
 from Metrics.externalURIs import externalURIs
 from Metrics.localLinks import localLinks

@@ -5,7 +5,7 @@ import rdflib
 def humanDesc(g_onto, liste_map, g_map, raw_data, g_link) : #Revoir le return, opérationnel sinon -------------------------------------------------
     nbPossible = 0
     result = metric()
-    result.name = "Usage of description of label"
+    result['name'] = "Usage of description of label"
     points = 0
     set_URIs = set()
     for s, _, _ in g_map.triples((None, None, None)) :
@@ -21,6 +21,6 @@ def humanDesc(g_onto, liste_map, g_map, raw_data, g_link) : #Revoir le return, o
         if passe :
             points = points + 1
         else :
-            result.feedback.append(elt + " is not understandable, please add an rdfs:comment or rdfs:label. ")
-    result.score = points/(nbPossible)
+            result['feedback'].append(elt + " is not understandable, please add an rdfs:comment or rdfs:label. ")
+    result['score'] = points/(nbPossible)
     return result

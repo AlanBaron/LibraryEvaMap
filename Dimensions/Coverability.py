@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.verticalCoverage import verticalCoverage
 
 class Coverability(Dimension) :

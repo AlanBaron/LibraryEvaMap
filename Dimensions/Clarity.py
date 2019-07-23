@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.humanReadable import humanReadableURIs
 from Metrics.humanDesc import humanDesc
 from Metrics.longTerm import longTerm

@@ -1,7 +1,4 @@
-from EvaMap import EvaMap
-
-
-class Dimension(EvaMap) :
+class Dimension:
 
     name = None
     score = 0
@@ -19,7 +16,7 @@ class Dimension(EvaMap) :
         dico["score"] =  self.score
         dico["metrics"] = self.list_results
 
-    def calc_score(self, g_onto, liste_map, g_map, raw_data, g_link) :
+    def calc_score(self, g_onto, liste_map, g_map, raw_data, g_link):
         for metric in self.list_metrics :
             result_metric = metric(g_onto, liste_map, g_map, raw_data, g_link)
             self.score = self.score * result_metric.score

@@ -8,23 +8,24 @@ from pathlib import Path
 import requests
 import json
 
-import Dimensions.Availability
-import Dimensions.Clarity
-import Dimensions.Conciseness
-import Dimensions.Connectability
-import Dimensions.Consistency
-import Dimensions.Coverability
+from Dimensions.Availability import Availability
+from Dimensions.Clarity import Clarity
+from Dimensions.Conciseness import Conciseness
+from Dimensions.Connectability import Connectability
+from Dimensions.Consistency import Consistency
+from Dimensions.Coverability import Coverability
 
 
-class EvaMap :
+class EvaMap:
 
     g_link = Graph()
     g_map = Graph()
     g_onto = Graph()
     liste_map = []
-    dimensions_list = [(Dimensions.Availability, 0), (Dimensions.Clarity, 0), (Dimensions.Conciseness, 0), (Dimensions.Connectability, 0), (Dimensions.Consistency, 0), (Dimensions.Coverability, 0)]
+    dimensions_list = [(Availability(), 0), (Clarity(), 0), (Conciseness(), 0), (Connectability(), 0), (Consistency(), 0), (Coverability(), 0)]
     score_tot = []
     final_list = []
+    raw_data = {}
 
     def __init__(self, onto, map, data):
         self.read_json(data) #From json
@@ -50,7 +51,7 @@ class EvaMap :
             mapping = yaml.load(open(file), Loader=yaml.FullLoader)
             liste_map = self.yamlToTriples(mapping)
 
-    def yamlToTriples(mapping):
+    def yamlToTriples(self, mapping):
         liste_map = []
         prefString = ""
         for name in mapping["mappings"]:
@@ -113,6 +114,6 @@ class EvaMap :
             self.weight[i] = poids
 
     def calc_tot(self):
-        for dimension in self.dimensions_list :
+        for dimension in self.dimensions_list:
             self.score_tot.append(dimension[0].calc_score(self.g_onto, self.liste_map, self.g_map, self.raw_data, self.g_link))
             self.final_list["tot_score"] = self.final_list["tot_score"] + 0 #voir les poids

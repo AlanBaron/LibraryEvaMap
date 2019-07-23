@@ -1,4 +1,4 @@
-from Dimensions import Dimension
+from Dimensions.Dimension import Dimension
 from Metrics.subClassesProperties import subClassesProperties
 from Metrics.equivalentClassesProperties import equivalentClassesProperties
 from Metrics.disjointWith import disjointWith

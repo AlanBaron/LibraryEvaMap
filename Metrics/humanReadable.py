@@ -10,7 +10,7 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
     nbPossible = 0
     points = 0
     result = metric()
-    result.name = "Human readable URIs"
+    result['name'] = "Human readable URIs"
     for s, p, o in g_map.triples((None, None, None)) :
         if isinstance(s, rdflib.term.URIRef) :
             nbPossible = nbPossible + 1
@@ -20,14 +20,14 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1
@@ -39,14 +39,14 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1
@@ -58,21 +58,21 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result.feedback.append(str + "is not Human Readable")
+                    result['feedback'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score = 1-((nbPossible) - points)/(nbPossible)
+        result['score'] = 1-((nbPossible) - points)/(nbPossible)
     return result
 
 def test_HumanReadable(str) : #------------------------ Utilisé au dessus --------------------------------------------------
