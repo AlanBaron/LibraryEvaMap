@@ -18,7 +18,7 @@ def sameAs(g_onto, liste_map, g_map, raw_data, g_link) :
             points = points + 1
     if nbPossible == 0 :
         result['score'] = 0
-        result['feedback'].append("You should use some sameAs properties")
+        result['feedbacks'].append("You should use some sameAs properties")
     else :
         result['score'] = points/(nbPossible)
     return result

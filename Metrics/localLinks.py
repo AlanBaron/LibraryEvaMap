@@ -7,6 +7,7 @@ def localLinks(g_onto, liste_map, g_map, raw_data, g_link) : #Retrourne en quelq
     liste_value = []
     result = metric()
     result['name'] = "Use of one global mapping"
+    result['score'] = 0
     i = 1
     val_S = 0
     val_O = 0
@@ -44,7 +45,8 @@ def localLinks(g_onto, liste_map, g_map, raw_data, g_link) : #Retrourne en quelq
     for elt in liste_value :
         if elt[1] not in nb :
             nb.append(elt[1])
-    result['score'] = 1/len(nb)
+    if nb:
+        result['score'] = 1/len(nb)
     return result
 
 def localLinkNewCalc(liste, ref, value, g_link) : #Utilisé pour la méthode précédente uniquement

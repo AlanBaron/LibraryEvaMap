@@ -15,12 +15,12 @@ def longTerm(g_onto, liste_map, g_map, raw_data, g_link) : #Complété, corrigé
     for elt in set_URIs :
         nbPossible = nbPossible + 1
         splitted_elt = elt.split('/')
-        for elements in splitted_elt :
+        for elements in splitted_elt:
             try :
                 if int(elements) > 1990 and int(elements) < 2050 :
                     points = points + 1
                 else :
-                    result['feedback'].append(elements + "should contain a date.")
+                    result['feedbacks'].append(elements + "should contain a date.")
             except ValueError :
                 pass
     if nbPossible == 0 :

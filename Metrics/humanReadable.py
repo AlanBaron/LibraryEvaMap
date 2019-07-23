@@ -1,4 +1,3 @@
-
 from urllib.parse import urlparse
 import re
 
@@ -20,14 +19,14 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1
@@ -39,14 +38,14 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1
@@ -58,14 +57,14 @@ def humanReadableURIs(g_onto, liste_map, g_map, raw_data, g_link) : #Complet ---
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             else :
                 str = str.path
                 str = str.split("/")[-1]
                 if test_HumanReadable(str) :
                     points = points + 1
                 else :
-                    result['feedback'].append(str + "is not Human Readable")
+                    result['feedbacks'].append(str + "is not Human Readable")
             if str.startswith('$') :
                 nbPossible = nbPossible - 1
                 points = points - 1

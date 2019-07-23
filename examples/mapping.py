@@ -1,4 +1,4 @@
-mappings:
+YARRRML_MAPPING = '''mappings:
     match:
         source: dataset-source
         subject: https://example.org/$(home_team)-$(away_team)
@@ -28,4 +28,4 @@ mappings:
         predicateobjects:
         - [a, 'http://dbpedia.org/ontology/SportsTeam']
 sources:
-    dataset-source: [data.json~jsonpath, '$.records.[*].fields']
+    dataset-source: [data.json~jsonpath, '$.records.[*].fields']'''

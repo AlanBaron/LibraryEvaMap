@@ -30,7 +30,7 @@ def domainRange(g_onto, liste_map, g_map, raw_data, g_link) : #Il est bon de not
         if boolean :
             points = points + 1
         else :
-            result['feedback'].append(p + " has the wrong domain.")
+            result['feedbacks'].append(str(p) + " has the wrong domain.")
         liste_O = []
         boolean = False
         for _, _, o2 in g_link.triples((p, rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#range'), None))	:
@@ -60,7 +60,7 @@ def domainRange(g_onto, liste_map, g_map, raw_data, g_link) : #Il est bon de not
         if boolean :
             points = points + 1
         else :
-            result['feedback'].append(p + " has the wrong range.")
+            result['feedbacks'].append(str(p) + " has the wrong range.")
 
     if nbPossible == 0 :
         result['score'] = 1

@@ -7,17 +7,18 @@ class Dimension:
 
     def __init__(self, nom, list_metrics) :
         self.name = nom
-        self.score = 0
         self.list_metrics = list_metrics
 
     def dim_to_string(self) :
         dico = {}
         dico["name"] = self.name
-        dico["score"] =  self.score
+        dico["score"] = self.score
         dico["metrics"] = self.list_results
+        return dico
 
     def calc_score(self, g_onto, liste_map, g_map, raw_data, g_link):
-        for metric in self.list_metrics :
+        for metric in self.list_metrics:
             result_metric = metric(g_onto, liste_map, g_map, raw_data, g_link)
-            self.score = self.score * result_metric.score
+            self.score += result_metric['score'] / len(self.list_metrics)
             self.list_results.append(result_metric)
+        return self.score

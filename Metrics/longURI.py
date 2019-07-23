@@ -13,18 +13,18 @@ def longURI(g_onto, liste_map, g_map, raw_data, g_link) :
             nbPossible = nbPossible + 1
             if len(s) >= 80 :
                 points = points + 1
-                result['feedback'].append(s + "is more than 79 characters")
-    if isinstance(p, rdflib.term.URIRef) :
+                result['feedbacks'].append(str(s) + "is more than 79 characters")
+        if isinstance(p, rdflib.term.URIRef) :
             nbPossible = nbPossible + 1
             if len(p) >= 80 :
                 points = points + 1
-                result['feedback'].append(p + "is more than 79 characters")
+                result['feedbacks'].append(str(p) + "is more than 79 characters")
 
-    if isinstance(o, rdflib.term.URIRef) :
+        if isinstance(o, rdflib.term.URIRef) :
             nbPossible = nbPossible + 1
             if len(o) >= 80 :
                 points = points + 1
-                result['feedback'].append(o + "is more than 79 characters")
+                result['feedbacks'].append(str(o) + "is more than 79 characters")
 
     if nbPossible == 0:
         result['score'] = 1

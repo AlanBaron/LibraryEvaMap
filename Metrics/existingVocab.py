@@ -33,7 +33,7 @@ def existingVocab(g_onto, liste_map, g_map, raw_data, g_link) :
         if json_data["total_results"] != 0 :
             points = points + 1
         else :
-            result['feedback'].append(elt + " is not referenced in LOV.")
+            result['feedbacks'].append(str(elt) + " is not referenced in LOV.")
     if nbPossible == 0 :
         result['score'] = 1
     else :

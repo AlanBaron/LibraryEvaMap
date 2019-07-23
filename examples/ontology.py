@@ -1,4 +1,4 @@
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+TTL_ONTOLOGY = '''@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix schema: <http://schema.org/> .
 @prefix wdrs: <http://www.w3.org/2007/05/powder-s#> .
@@ -1172,4 +1172,4 @@
 <http://dbpedia.org/ontology/stateOfOriginTeam> rdfs:range <http://dbpedia.org/ontology/SportsTeam> .
 <http://dbpedia.org/ontology/teamCoached> rdfs:range <http://dbpedia.org/ontology/SportsTeam> .
 <http://dbpedia.org/ontology/youthClub> rdfs:range <http://dbpedia.org/ontology/SportsTeam> .
-<http://dbpedia.org/ontology/currentMember> rdfs:domain <http://dbpedia.org/ontology/SportsTeam> .
+<http://dbpedia.org/ontology/currentMember> rdfs:domain <http://dbpedia.org/ontology/SportsTeam> .'''

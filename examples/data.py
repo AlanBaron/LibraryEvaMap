@@ -1,4 +1,4 @@
-{
+JSON_DATA = '''{
     "nhits": 380,
     "parameters": {
         "dataset": [
@@ -440,4 +440,4 @@
             ]
         }
     ]
-}
+}'''

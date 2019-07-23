@@ -36,7 +36,7 @@ def Error(g_onto, liste_map, g_map, raw_data, g_link) :
         try :
             a.raise_for_status()
         except:
-            result['feedbacks'].append(elt + "gives an Error")
+            result['feedbacks'].append(str(elt) + "gives an Error")
             points = points + 1
 
     if nbPossible == 0 :

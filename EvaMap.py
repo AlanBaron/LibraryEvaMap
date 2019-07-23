@@ -22,15 +22,17 @@ class EvaMap:
     g_map = Graph()
     g_onto = Graph()
     liste_map = []
-    dimensions_list = [(Availability(), 0), (Clarity(), 0), (Conciseness(), 0), (Connectability(), 0), (Consistency(), 0), (Coverability(), 0)]
+    dimensions_list = [(Availability(), 1), (Clarity(), 1), (Conciseness(), 1), (Connectability(), 1), (Consistency(), 1), (Coverability(), 1)]
     score_tot = []
     final_list = []
     raw_data = {}
+    final_score = 0
 
     def __init__(self, onto, map, data):
         self.read_json(data) #From json
         self.read_yaml(map)  #From yaml
         self.read_rdf(onto)
+        nbTriples = 0
         for triple in self.liste_map:
             nbTriples = nbTriples + 1
             self.g_link.add(triple)
@@ -38,18 +40,13 @@ class EvaMap:
         weight = dict() #Intialiser par défaut tous les poids, avec les noms de toutes les dimensions.
 
     #Regarder comment bien lire les fichiers avec la webApp
-    def read_json(self, file):
-        if Path(file).suffix == '.json':
-            self.raw_data = json.load(open(file))
-        try :
-            self.raw_data = self.raw_data["records"]
-        except:
-            pass
+    def read_json(self, json_data):
+        self.raw_data = json.loads(json_data)
+        self.raw_data = self.raw_data["records"]
 
-    def read_yaml(self, file):
-        if (Path(file).suffix == '.yml') or (Path(file).suffix == '.yaml'):
-            mapping = yaml.load(open(file), Loader=yaml.FullLoader)
-            liste_map = self.yamlToTriples(mapping)
+    def read_yaml(self, yarrrml_mapping):
+        mapping = yaml.safe_load(yarrrml_mapping)
+        self.liste_map = self.yamlToTriples(mapping)
 
     def yamlToTriples(self, mapping):
         liste_map = []
@@ -102,11 +99,10 @@ class EvaMap:
                     triples[2] = rdflib.term.URIRef(mapping["mappings"][name]["subject"])
         return liste_map
 
-    def read_rdf(self, file):
-        if Path(file).suffix == '.rdf':
-            self.g_onto.parse(open(file))
-            for s, p, o in self.g_onto.triples((None, None, None)):
-                self.g_link.add((s, p, o))
+    def read_rdf(self, rdf):
+        self.g_onto.parse(data=rdf, format='turtle')
+        for s, p, o in self.g_onto.triples((None, None, None)):
+            self.g_link.add((s, p, o))
 
     def set_weight(self, dict):
         i = 0
@@ -114,6 +110,12 @@ class EvaMap:
             self.weight[i] = poids
 
     def calc_tot(self):
+        self.final_score = 0
+        tot_weight = 0
         for dimension in self.dimensions_list:
-            self.score_tot.append(dimension[0].calc_score(self.g_onto, self.liste_map, self.g_map, self.raw_data, self.g_link))
-            self.final_list["tot_score"] = self.final_list["tot_score"] + 0 #voir les poids
+            dimension_score = dimension[0].calc_score(self.g_onto, self.liste_map, self.g_map, self.raw_data, self.g_link)
+            self.score_tot.append(dimension_score)
+            self.final_list.append(dimension[0].dim_to_string())
+            self.final_score += (dimension[1] * dimension_score)
+            tot_weight += dimension[1]
+        self.final_score = self.final_score / tot_weight
