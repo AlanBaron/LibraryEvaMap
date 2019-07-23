@@ -6,7 +6,7 @@ from Metrics.metric import metric
 
 def verticalCoverage(g_onto, liste_map, g_map, raw_data, g_link) :
     result = metric()
-    result.name = "Data coverage"
+    result['name'] = "Data coverage"
     set_dollarVal = set()
     correspondance = 0
     regexp = re.compile('\(([^)]+)')

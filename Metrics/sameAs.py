@@ -5,7 +5,7 @@ from Metrics.metric import metric
 
 def sameAs(g_onto, liste_map, g_map, raw_data, g_link) :
     result = metric()
-    result.name = "Use of sameAs properties"
+    result['name'] = "Use of sameAs properties"
     nbPossible = 0
     points = 0
     set_URIs = set()
@@ -17,8 +17,8 @@ def sameAs(g_onto, liste_map, g_map, raw_data, g_link) :
         for _, _, _  in g_map.triples((elt, rdflib.term.URIRef('http://www.w3.org/2002/07/owl#sameAs'), None)) :
             points = points + 1
     if nbPossible == 0 :
-        result.score = 0
-        result.feedback.append("You should use some sameAs properties")
+        result['score'] = 0
+        result['feedback'].append("You should use some sameAs properties")
     else :
-        result.score = points/(nbPossible)
+        result['score'] = points/(nbPossible)
     return result

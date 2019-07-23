@@ -5,7 +5,7 @@ from Metrics.metric import metric
 
 def subClassesProperties(g_onto, liste_map, g_map, raw_data, g_link) :
     result = metric()
-    result.name = "Correct use of subclasses and properties"
+    result['name'] = "Correct use of subclasses and properties"
     set_SO = set()
     set_P = set()
     points = 0
@@ -23,7 +23,7 @@ def subClassesProperties(g_onto, liste_map, g_map, raw_data, g_link) :
             elif (o2, None, None) in g_map and not isinstance(o2, rdflib.term.BNode):
                 points = points + 1
             else :
-                result.feedback.append(o2 + "is missing.")
+                result['feedback'].append(o2 + "is missing.")
     for pred in set_P :
         for _, _, o3 in g_onto.triples((None, rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#subPropertyOf'), pred)) :
             if not isinstance(o3, rdflib.term.BNode) :
@@ -31,9 +31,9 @@ def subClassesProperties(g_onto, liste_map, g_map, raw_data, g_link) :
             if (None, o3, None) in g_map and not isinstance(o3, rdflib.term.BNode) :
                 points = points + 1
             else :
-                result.feedback.append(o3 + "is missing.")
+                result['feedback'].append(o3 + "is missing.")
     if nbPossible == 0 :
-        result.score = 1
+        result['score'] = 1
     else :
-        result.score = points/nbPossible
+        result['score'] = points/nbPossible
     return result
