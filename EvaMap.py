@@ -1,14 +1,10 @@
 #import sys
 import os
-import argparse
 import rdflib
-#import pyaml
 import yaml
 import re
 from rdflib.graph import Graph
 from pathlib import Path
-#import urllib
-from urllib.parse import urlparse
 import requests
 import json
 
@@ -120,4 +116,3 @@ class EvaMap :
         for dimension in self.dimensions_list :
             self.score_tot.append(dimension[0].calc_score(self.g_onto, self.liste_map, self.g_map, self.raw_data, self.g_link))
             self.final_list["tot_score"] = self.final_list["tot_score"] + 0 #voir les poids
-        
